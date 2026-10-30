@@ -11,3 +11,6 @@ unpackage/dist/dev/
 # 日志与备份
 *.log
 *.bak*
+
+# 本地工作目录
+.workbuddy/
