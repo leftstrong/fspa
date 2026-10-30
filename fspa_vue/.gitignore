@@ -19,5 +19,4 @@ selenium-debug.log
 *.sln
 *.local
 
-package-lock.json
-yarn.lock
+# lockfile 必须提交：Dockerfile 用 npm ci，可复现构建依赖它
