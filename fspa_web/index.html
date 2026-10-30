@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>良物换物 · 物为人用，方为良物</title>
+  <meta name="description" content="良物换物是一个不涉及金钱的闲置交换平台。链式智能换物支持 2–6 人成链，把两个人换不成的需求串成一条接力路径，让闲置继续被使用。">
+  <meta name="theme-color" content="#ff5a36">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="良物换物 · 物为人用，方为良物">
+  <meta property="og:description" content="链式智能换物：一个人换不到，几个人接力就成了。不花钱，也能换到心头好。">
+  <meta property="og:image" content="assets/img/og-cover.jpg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="良物换物 首页">
+      <img src="assets/img/logo-dark.svg" alt="良物换物">
+    </a>
+    <nav class="nav__links" aria-label="主导航">
+      <a href="features.html" data-page="features.html">产品能力</a>
+      <a href="index.html#chain">智能换物</a>
+      <a href="trust.html" data-page="trust.html">信用与安全</a>
+      <a href="index.html#faq">常见问题</a>
+      <a href="about.html" data-page="about.html">关于我们</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--primary btn--sm" href="#download">进入小程序</a>
+      <button class="nav__toggle" aria-label="打开菜单"><span></span></button>
+    </div>
+  </div>
+  <div class="nav__mobile">
+    <a href="features.html">产品能力</a>
+    <a href="index.html#chain">智能换物</a>
+    <a href="trust.html">信用与安全</a>
+    <a href="index.html#faq">常见问题</a>
+    <a href="about.html">关于我们</a>
+    <a class="btn btn--primary" href="#download">进入小程序</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+
+      <div class="hero__copy">
+        <span class="hero__tag reveal">
+          <b>链式智能换物</b><span>已支持 2–6 人成链</span>
+        </span>
+
+        <h1 class="hero__title reveal">
+          <span>物为人用</span>
+          <span>方为<em>良物</em></span>
+        </h1>
+
+        <p class="hero__desc reveal">
+          你想要的，也许正躺在别人家里；你闲置的，可能正是别人找了很久的那一件。
+          良物换物不涉及金钱，只做一件事——把闲置交到真正需要它的人手里。
+          当两个人换不成，我们把它串成一条链。
+        </p>
+
+        <div class="hero__actions reveal">
+          <a class="btn btn--primary" href="#download">
+            进入小程序
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn btn--ghost" href="#chain">看看链式换物怎么走</a>
+        </div>
+
+        <dl class="hero__meta reveal">
+          <div>
+            <dt class="mono-num">2–6</dt>
+            <dd>人物品成链</dd>
+          </div>
+          <div>
+            <dt class="mono-num">1–5</dt>
+            <dd>跳匹配路径</dd>
+          </div>
+          <div>
+            <dt class="mono-num">13</dt>
+            <dd>家快递已接入</dd>
+          </div>
+          <div>
+            <dt class="mono-num">0</dt>
+            <dd>元交易手续费</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- 链路轨道示意 -->
+      <div class="orbit reveal" aria-hidden="true">
+        <svg class="orbit__svg" viewBox="0 0 600 600" role="presentation">
+          <circle class="orbit__track" cx="300" cy="300" r="200"/>
+          <circle class="orbit__track orbit__track--inner" cx="300" cy="300" r="118"/>
+          <circle class="orbit__arc" cx="300" cy="300" r="200"/>
+          <circle class="orbit__arc orbit__arc--alt" cx="300" cy="300" r="200"/>
+
+          <!-- 你 -->
+          <g class="orbit__node">
+            <circle cx="300" cy="100" r="15"/>
+            <circle cx="300" cy="100" r="5" fill="#ff5a36" stroke="none"/>
+            <text class="orbit__kicker" x="300" y="46" text-anchor="middle">YOU</text>
+            <text class="orbit__label orbit__label--strong" x="300" y="66" text-anchor="middle">你的 · 旧相机</text>
+          </g>
+
+          <!-- 林小姐 -->
+          <g class="orbit__node orbit__node--target">
+            <circle cx="500" cy="300" r="15"/>
+            <circle cx="500" cy="300" r="5" fill="#fff9f2" stroke="none"/>
+            <text class="orbit__kicker" x="500" y="340" text-anchor="middle">WANT</text>
+            <text class="orbit__label orbit__label--strong" x="500" y="362" text-anchor="middle">露营帐篷</text>
+            <text class="orbit__label" x="500" y="383" text-anchor="middle">林小姐</text>
+          </g>
+
+          <!-- 老周 -->
+          <g class="orbit__node">
+            <circle cx="300" cy="500" r="15"/>
+            <circle cx="300" cy="500" r="5" fill="#ff5a36" stroke="none"/>
+            <text class="orbit__label orbit__label--strong" x="300" y="548" text-anchor="middle">机械键盘</text>
+            <text class="orbit__label" x="300" y="568" text-anchor="middle">老周</text>
+          </g>
+
+          <!-- 阿岚 -->
+          <g class="orbit__node">
+            <circle cx="100" cy="300" r="15"/>
+            <circle cx="100" cy="300" r="5" fill="#ff5a36" stroke="none"/>
+            <text class="orbit__label orbit__label--strong" x="76" y="296" text-anchor="end">公路车</text>
+            <text class="orbit__label" x="76" y="316" text-anchor="end">阿岚</text>
+          </g>
+
+          <!-- 中心 -->
+          <text class="orbit__center-num" x="300" y="296" text-anchor="middle">1</text>
+          <text class="orbit__center-txt" x="300" y="330" text-anchor="middle">条闭环链路</text>
+          <text class="orbit__center-txt" x="300" y="356" text-anchor="middle" style="opacity:.66">4 人 · 4 件 · 0 元</text>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================= 品牌条 ======================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Circular Exchange</span>
+      <span>物为人用 方为良物</span>
+      <span>让闲置继续被使用</span>
+      <span>不花钱 也能换到心头好</span>
+      <span>Chain Matching</span>
+      <span>把闲置交给需要它的人</span>
+      <span>Circular Exchange</span>
+      <span>物为人用 方为良物</span>
+      <span>让闲置继续被使用</span>
+      <span>不花钱 也能换到心头好</span>
+      <span>Chain Matching</span>
+      <span>把闲置交给需要它的人</span>
+    </div>
+  </div>
+
+  <!-- ======================= 理念 ======================= -->
+  <section class="section philosophy" id="why">
+    <div class="container">
+      <span class="eyebrow reveal">Why 良物</span>
+      <p class="philosophy__quote reveal" style="margin-top:28px">
+        一件物品真正的价值，<em>在被使用的那一刻</em>，<br>
+        而不是被买下的那一刻。
+      </p>
+
+      <div class="philosophy__grid">
+        <article class="philosophy__item reveal">
+          <span class="philosophy__index">01</span>
+          <h3>闲置不是垃圾</h3>
+          <p>每个家庭都有大量物品处于长期闲置状态。它们不是没有价值，只是还没遇到下一个使用者。</p>
+        </article>
+        <article class="philosophy__item reveal">
+          <span class="philosophy__index">02</span>
+          <h3>换，比买更聪明</h3>
+          <p>你多出来的那件，恰好是别人缺的那件。一次交换，让两件闲置同时变成两件“正在被用”的东西。</p>
+        </article>
+        <article class="philosophy__item reveal">
+          <span class="philosophy__index">03</span>
+          <h3>换不成，才是常态</h3>
+          <p>两个人的需求很难正好对上。所以我们把“换一次”变成“换一串”——让第三个人、第四个人加入这场接力。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 三大能力 ======================= -->
+  <section class="section capabilities" id="capabilities">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__main">
+          <span class="eyebrow reveal">Platform</span>
+          <h2 class="h-section reveal">换物这件事，<br>我们做对了三件。</h2>
+        </div>
+        <p class="section-head__aside reveal">
+          不碰资金、不做竞价，把全部工程投入在匹配、信任与流程留痕上——这三件事决定了换物到底能不能成。
+        </p>
+      </div>
+
+      <div class="cap-grid">
+        <article class="cap reveal">
+          <span class="cap__no">01 / MATCHING</span>
+          <svg class="cap__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="14" cy="14" r="7"/>
+            <circle cx="34" cy="34" r="7"/>
+            <circle cx="34" cy="14" r="7" stroke-dasharray="2 4"/>
+            <path d="M21 14h6M14 21v13M21 34h6" stroke-linecap="round"/>
+          </svg>
+          <h3>链式智能换物</h3>
+          <p>一个人换不到，几个人接力就成了。系统在“你想要的”与“对方期望的”之间做多跳搜索，把零散需求串成闭环。</p>
+          <ul class="cap__list">
+            <li>支持 2–6 人物品成链、1–5 跳路径</li>
+            <li>只走第一棒，后续棒次不锁定物品</li>
+            <li>按跳数计费，成交才收积分</li>
+          </ul>
+        </article>
+
+        <article class="cap reveal">
+          <span class="cap__no">02 / TRUST</span>
+          <svg class="cap__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M24 6l14 6v11c0 9-6 15-14 19-8-4-14-10-14-19V12l14-6z" stroke-linejoin="round"/>
+            <path d="M17 24l5 5 9-10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>信用不靠钱，靠交换</h3>
+          <p>没有押金，也没有担保交易。信任建立在可验证的行为上：手机绑定、真实完成的交换、彼此的评价。</p>
+          <ul class="cap__list">
+            <li>手机绑定即得基础信用分</li>
+            <li>成功交换与好评加分，举报成立扣分</li>
+            <li>L1–L5 五级信用，信息流加权</li>
+          </ul>
+        </article>
+
+        <article class="cap reveal">
+          <span class="cap__no">03 / TRACE</span>
+          <svg class="cap__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M8 16h32M8 24h32M8 32h20" stroke-linecap="round"/>
+            <circle cx="36" cy="32" r="3"/>
+          </svg>
+          <h3>全流程留痕</h3>
+          <p>申请、协商、换物单、双方交付、确认收货、互评，每一步都留下记录。自提与快递都支持。</p>
+          <ul class="cap__list">
+            <li>物流单号 24 小时内可自行修改</li>
+            <li>13 家主流快递公司已接入</li>
+            <li>举报、仲裁与处理结果全程可追溯</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 智能换物 ======================= -->
+  <section class="section chain" id="chain">
+    <div class="container chain__layout">
+
+      <div class="chain__copy">
+        <span class="eyebrow reveal">Smart Chain</span>
+        <h2 class="h-section reveal">换不成的时候，<br>让第三个人加入。</h2>
+        <p class="lead reveal">
+          传统换物要求“你想要的正好是我的，我想要的正好是你的”——概率极低。
+          良物换物把所有人的期望做成一张有向图，用多跳路径把互不相识的人串成一条闭环。
+        </p>
+
+        <div class="chain__points">
+          <div class="chain__point reveal">
+            <strong>01</strong>
+            <div>
+              <h4>先说想要什么</h4>
+              <p>不用先翻自己的柜子。挑一件你真正想要的好物，系统再去找一条能接力的路。</p>
+            </div>
+          </div>
+          <div class="chain__point reveal">
+            <strong>02</strong>
+            <div>
+              <h4>系统逐跳搜索</h4>
+              <p>沿着“物品 → 期望”的关系一层层往下找，直到回到你自己，形成闭环。最多 6 人、5 跳。</p>
+            </div>
+          </div>
+          <div class="chain__point reveal">
+            <strong>03</strong>
+            <div>
+              <h4>只走第一棒</h4>
+              <p>多跳链路不要求一次寄出好几件。先完成你与下一棒的互换，剩下的棒次等这一棒走完再发起。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chain__board reveal">
+        <div class="chain__board-head">
+          <span>链路示例</span>
+          <b>4 人 · 3 跳 · 闭环</b>
+        </div>
+
+        <div class="path">
+          <div class="path__row">
+            <span class="path__idx">01</span>
+            <div class="path__who">你<small>闲置：旧相机</small></div>
+            <span class="path__item">想要 露营帐篷</span>
+          </div>
+          <div class="path__row">
+            <span class="path__idx">02</span>
+            <div class="path__who">林小姐<small>闲置：露营帐篷</small></div>
+            <span class="path__item">想要 机械键盘</span>
+          </div>
+          <div class="path__row">
+            <span class="path__idx">03</span>
+            <div class="path__who">老周<small>闲置：机械键盘</small></div>
+            <span class="path__item">想要 公路车</span>
+          </div>
+          <div class="path__row">
+            <span class="path__idx">04</span>
+            <div class="path__who">阿岚<small>闲置：公路车</small></div>
+            <span class="path__item">想要 旧相机</span>
+          </div>
+        </div>
+
+        <p class="chain__board-foot">
+          四个人都换到了想要的。<b>而你只需走第一棒。</b>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================= 流程 ======================= -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__main">
+          <span class="eyebrow reveal">How it works</span>
+          <h2 class="h-section reveal">从发布到互评，五步。</h2>
+        </div>
+        <p class="section-head__aside reveal">
+          每一步都有明确的状态与记录，谁在等谁、东西走到哪儿，打开换物单就能看见。
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step reveal">
+          <span class="step__no">01</span>
+          <h3>发布闲置</h3>
+          <p>标题、多图、成色、所在城市，以及期望换取：指定物品、某个品类，或者“都行”。</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__no">02</span>
+          <h3>发起申请</h3>
+          <p>看中一件，附上自己的物品作为交换提案；也可以直接发起链式匹配，让系统去找人。</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__no">03</span>
+          <h3>协商确认</h3>
+          <p>站内对话敲定自提点或快递方式，对方接受后生成换物单，双方义务就此明确。</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__no">04</span>
+          <h3>双方交付</h3>
+          <p>各自发出并填写物流单号，或标记自提交接完成；单号填错有 24 小时的自查修正窗口。</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__no">05</span>
+          <h3>完成互评</h3>
+          <p>双方确认收货后互评，信用分与等级随之更新，完成次数与积分一并到账。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 信用 ======================= -->
+  <section class="section credit" id="credit">
+    <div class="container credit__layout">
+
+      <div>
+        <span class="eyebrow reveal">Trust System</span>
+        <h2 class="h-section reveal" style="margin:22px 0 24px">没有押金，<br>也能放心换。</h2>
+        <p class="lead reveal">
+          平台不介入资金，所以信用只能来自行为本身。我们把每一次交换、每一条评价、每一起举报的处理结果，都折算进同一个分数里。
+        </p>
+
+        <div class="credit__score reveal">
+          <div class="credit__score-num mono-num">100<small>分制 · 信用分</small></div>
+          <div class="credit__rules">
+            <div><span>手机绑定</span><b>+50</b></div>
+            <div><span>完成一次交换</span><b>+5</b></div>
+            <div><span>对方好评</span><b>+2</b></div>
+            <div><span>收到差评</span><b>−3</b></div>
+            <div><span>举报成立</span><b>−20</b></div>
+          </div>
+          <p>等级只看成功交换次数，评价分只做微调，不影响门槛——刷分刷不出等级。</p>
+        </div>
+      </div>
+
+      <div class="levels reveal">
+        <div class="level">
+          <span class="level__tag mono-num">L1</span>
+          <span class="level__name">良物新手</span>
+          <span class="level__need">0 次成功交换</span>
+          <span class="level__benefit">基础徽章</span>
+        </div>
+        <div class="level">
+          <span class="level__tag mono-num">L2</span>
+          <span class="level__name">良物常客</span>
+          <span class="level__need">≥ 3 次</span>
+          <span class="level__benefit">信息流轻微加权</span>
+        </div>
+        <div class="level">
+          <span class="level__tag mono-num">L3</span>
+          <span class="level__name">良物达人</span>
+          <span class="level__need">≥ 10 次</span>
+          <span class="level__benefit">曝光优先 · 信用标识</span>
+        </div>
+        <div class="level">
+          <span class="level__tag mono-num">L4</span>
+          <span class="level__name">良物行家</span>
+          <span class="level__need">≥ 30 次</span>
+          <span class="level__benefit">发布走快速审核</span>
+        </div>
+        <div class="level">
+          <span class="level__tag mono-num">L5</span>
+          <span class="level__name">良物传奇</span>
+          <span class="level__need">≥ 100 次</span>
+          <span class="level__benefit">最高曝光 · 专属徽章</span>
+        </div>
+        <p class="levels__note">
+          等级随成功交换次数自动更新。取消单与被举报成立的订单不计入次数，评价分只做微调、不进门槛。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================= 数据带 ======================= -->
+  <section class="section section--tight stats">
+    <div class="container stats__inner">
+      <div class="stat reveal">
+        <div class="stat__num mono-num"><span data-count="6">0</span></div>
+        <div class="stat__label">人，一条链最多的人数<br>（2–6 人，1–5 跳）</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat__num mono-num"><span data-count="13">0</span></div>
+        <div class="stat__label">家主流快递已接入<br>顺丰 / 京东 / EMS 等</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat__num mono-num"><span data-count="5">0</span></div>
+        <div class="stat__label">级信用等级<br>只由成功交换次数决定</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat__num mono-num"><span data-count="0">0</span><span>元</span></div>
+        <div class="stat__label">交易手续费<br>物品直接交换，平台不碰钱</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section class="section faq" id="faq">
+    <div class="container faq__layout">
+      <div>
+        <span class="eyebrow reveal">FAQ</span>
+        <h2 class="h-section reveal" style="margin-top:22px">你可能<br>还想知道。</h2>
+        <p class="lead reveal" style="margin-top:24px;font-size:15px">
+          还有别的问题？在「关于我们」页找到联系方式，我们会直接回复。
+        </p>
+      </div>
+
+      <div class="faq__list reveal">
+        <details class="faq__item" open>
+          <summary>换物要花钱吗？</summary>
+          <p>不。物品直接交换，平台不介入资金流转。只有“置顶曝光”这类增值服务会消耗积分，而积分可以通过发布闲置、完成交换、邀请好友获得。</p>
+        </details>
+        <details class="faq__item">
+          <summary>对方不发货怎么办？</summary>
+          <p>换物单生成后，双方各自填写物流单号，24 小时内可自行修改（最多 3 次）。任一方都可以发起举报，平台会介入仲裁；举报成立会对被举报方下架物品、扣减信用分，并影响后续曝光。</p>
+        </details>
+        <details class="faq__item">
+          <summary>链式换物需要我一次寄好几件吗？</summary>
+          <p>不需要。多跳链路默认“只走第一棒”：先完成你与下一棒之间的互换，后续棒次不锁定物品，等这一棒完成后再依次发起。</p>
+        </details>
+        <details class="faq__item">
+          <summary>信用分和等级是怎么算的？</summary>
+          <p>手机绑定得基础分；每完成一次交换加分，收到好评加分，差评扣分，举报成立扣分。等级只看成功交换次数（0 / 3 / 10 / 30 / 100 次），评价分只做微调，不影响门槛。</p>
+        </details>
+        <details class="faq__item">
+          <summary>支持哪些交付方式？</summary>
+          <p>同城自提与快递都支持。自提可约定地点与时间；快递已接入顺丰、中通、圆通、韵达、申通、极兔、京东、EMS、邮政、德邦、菜鸟、闪送等 13 家。</p>
+        </details>
+        <details class="faq__item">
+          <summary>哪些物品不能换？</summary>
+          <p>违禁品、假冒伪劣、涉及人身安全风险的物品不允许发布。所有发布的物品都会经过平台审核，审核通过后才会出现在信息流中。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CTA ======================= -->
+  <section class="section cta" id="download">
+    <div class="container cta__layout">
+      <div>
+        <span class="eyebrow reveal">Join 良物</span>
+        <h2 class="h-section reveal">让那件落灰的东西，<br>去下一个人的手里发光。</h2>
+        <p class="lead reveal">
+          发布第一件闲置，也许今天就能换到你想要的那一件。
+        </p>
+        <div class="cta__actions reveal">
+          <a class="btn btn--primary" href="#download">
+            微信搜索「良物换物」
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn btn--ghost" href="trust.html">查看换物规则</a>
+        </div>
+      </div>
+
+      <div class="cta__card reveal">
+        <div class="cta__qr">小程序码<br>请在此放置<br>正式二维码</div>
+        <p>微信扫码 / 搜索小程序<br>良物换物</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo.svg" alt="良物换物">
+        <p>良物换物是一个不涉及金钱的闲置交换平台。我们相信物为人用，方为良物——让每一件闲置，都尽快遇到下一个使用者。</p>
+      </div>
+      <div class="footer__col">
+        <h4>产品</h4>
+        <a href="features.html">产品能力</a>
+        <a href="index.html#chain">链式智能换物</a>
+        <a href="index.html#process">换物流程</a>
+        <a href="index.html#credit">信用体系</a>
+      </div>
+      <div class="footer__col">
+        <h4>规则</h4>
+        <a href="trust.html">信用与安全</a>
+        <a href="trust.html#rules">换物规则</a>
+        <a href="trust.html#report">举报与仲裁</a>
+        <a href="about.html">关于我们</a>
+      </div>
+      <div class="footer__col">
+        <h4>联系</h4>
+        <a href="mailto:54990871@qq.com">客服邮箱</a>
+        <a href="about.html#contact">商务合作</a>
+        <a href="about.html#contact">微信公众号</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> 良物换物 · 物为人用，方为良物</span>
+      <span>本站为产品介绍站点，不提供在线交易</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

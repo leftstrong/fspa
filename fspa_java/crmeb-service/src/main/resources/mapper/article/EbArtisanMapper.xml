@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zbkj.modules.autogencode.dao.EbArtisanDao">
+
+    <!-- 根据包名 模块名 以及类名 生成Mapper XML 配置文件 -->
+    <resultMap type="com.zbkj.common.model.article.EbArtisanEntity" id="ebArtisanMap">
+        <result property="id" column="id"/>
+        <result property="phone" column="phone"/>
+        <result property="realName" column="real_name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+        <result property="storeId" column="store_id"/>
+        <result property="subject" column="subject"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

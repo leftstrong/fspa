@@ -1,0 +1,28 @@
+# 构建上下文是仓库根目录，这些内容不需要进镜像
+.git
+.gitignore
+**/node_modules
+**/target
+**/*.log
+*.bak*
+*.iml
+*.md
+
+# 后端本地产物
+fspa_java/logs
+fspa_java/lsp
+fspa_java/crmebimage
+crmebimage
+sql
+
+# 前端产物：必须保留 unpackage/dist/build/h5（web 镜像要用），其余排除
+fspa_uni/unpackage/dist/build/mp-weixin
+fspa_uni/unpackage/dist/dev
+fspa_vue/dist
+fspa_vue/tests
+
+# 数据库初始化脚本走挂载，不进镜像
+deploy/mysql
+
+# 官网设计工具
+fspa_web/tools

@@ -1,0 +1,172 @@
+# =============================================================================
+# 良物换物 · 生产部署
+#
+# 端口约定（别搞错）：
+#   crmeb-front  容器内 20012  ← 小程序 / H5 调用的接口
+#   crmeb-admin  容器内 20010  ← fspa_vue 管理后台调用的接口
+#   nginx        80 → 宿主机 13999（唯一对外端口），按路径分流：
+#                /        入口导航页
+#                /web/    品牌官网
+#                /h5/     用户端 H5
+#                /admin/  运营管理后台
+#
+# 用法：
+#   cp .env.example .env && vi .env      # 改密码
+#   docker compose up -d --build
+# =============================================================================
+
+name: ${COMPOSE_PROJECT_NAME:-fspa}
+
+# ------------------------------ 后端公共环境 ------------------------------
+x-api-env: &api-env
+  TZ: Asia/Shanghai
+  SPRING_PROFILES_ACTIVE: prod
+  # prod 的 yml 里写死的是 10.0.4.6:33306，这里全部改用 compose 内的 mysql
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/crmeb?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull"
+  SPRING_DATASOURCE_USERNAME: root
+  SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+  SPRING_REDIS_HOST: redis
+  SPRING_REDIS_PORT: "6379"
+  SPRING_REDIS_PASSWORD: ${REDIS_PASSWORD}
+  SPRING_REDIS_DATABASE: "0"
+  # front 的 prod 配置里没有 imagePath，不补上传会 NPE(500)
+  CRMEB_IMAGEPATH: /app/images/
+  # 阿里云短信密钥（yml 里只留占位符，真实值从 .env 注入；admin/front 是两个不同账号）
+  ALIYUN_ACCESSKEY: ${ALIYUN_ACCESSKEY:-}
+  ALIYUN_ACCESSKEYSECRET: ${ALIYUN_ACCESSKEYSECRET:-}
+  ALIYUN_FRONT_ACCESSKEY: ${ALIYUN_FRONT_ACCESSKEY:-}
+  ALIYUN_FRONT_ACCESSKEYSECRET: ${ALIYUN_FRONT_ACCESSKEYSECRET:-}
+
+x-api-base: &api-base
+  restart: unless-stopped
+  networks: [fspa-net]
+  volumes:
+    - image-data:/app/images
+    - app-logs:/app/crmeb_log
+  depends_on:
+    mysql:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+
+services:
+  # ------------------------------ MySQL ------------------------------
+  mysql:
+    image: mysql:8.0
+    container_name: fspa-mysql
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --default-authentication-plugin=mysql_native_password
+      - --max_connections=500
+      - --lower_case_table_names=0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: crmeb
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql
+      # 首次启动自动按文件名顺序导入，顺序见 deploy/mysql/initdb
+      - ./deploy/mysql/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 40s
+    networks: [fspa-net]
+
+  # ------------------------------ Redis ------------------------------
+  redis:
+    image: redis:6-alpine
+    container_name: fspa-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD ping | grep PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    networks: [fspa-net]
+
+  # --------------------- 前台接口（小程序 / H5）20012 ---------------------
+  api-front:
+    build:
+      context: .
+      dockerfile: deploy/docker/api.Dockerfile
+      args:
+        MODULE: crmeb-front
+        JAR_NAME: Crmeb-front.jar
+    image: fspa/api-front:${TAG:-latest}
+    container_name: fspa-api-front
+    <<: *api-base
+    environment:
+      <<: *api-env
+      SERVER_PORT: "20012"
+      JAVA_OPTS: "${JAVA_OPTS_FRONT}"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/20012'"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
+
+  # ------------------------- 管理端接口 20010 -------------------------
+  api-admin:
+    build:
+      context: .
+      dockerfile: deploy/docker/api.Dockerfile
+      args:
+        MODULE: crmeb-admin
+        JAR_NAME: Crmeb-admin.jar
+    image: fspa/api-admin:${TAG:-latest}
+    container_name: fspa-api-admin
+    <<: *api-base
+    environment:
+      <<: *api-env
+      SERVER_PORT: "20010"
+      JAVA_OPTS: "${JAVA_OPTS_ADMIN}"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/20010'"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
+
+  # ------------------------- 前端三套站点 -------------------------
+  web:
+    build:
+      context: .
+      dockerfile: deploy/docker/web.Dockerfile
+      args:
+        # 留空 = 管理端走同源 /api，由 nginx 反代到 api-admin:20010
+        VUE_APP_BASE_API: ""
+        # 管理端部署子路径，必须与 nginx 的 location /admin/ 一致
+        PUBLIC_PATH: /admin/
+    image: fspa/web:${TAG:-latest}
+    container_name: fspa-web
+    restart: unless-stopped
+    # 只对外暴露一个端口：/ 入口页、/web/ 官网、/h5/ 商城、/admin/ 后台
+    ports:
+      - "${HTTP_PORT:-13999}:80"
+    depends_on:
+      - api-front
+      - api-admin
+    networks: [fspa-net]
+
+volumes:
+  mysql-data:
+  redis-data:
+  image-data:
+  app-logs:
+
+networks:
+  fspa-net:
+    driver: bridge

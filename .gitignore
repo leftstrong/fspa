@@ -1,0 +1,13 @@
+# 部署密码不进版本库
+.env
+.env.local
+
+# 依赖与构建产物
+node_modules/
+target/
+unpackage/dist/build/mp-weixin/
+unpackage/dist/dev/
+
+# 日志与备份
+*.log
+*.bak*

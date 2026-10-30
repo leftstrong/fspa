@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="良物">
+  <g fill="none" stroke="#FF5A36" stroke-width="6" stroke-linecap="round">
+    <circle cx="48" cy="48" r="33"/>
+    <path d="M70 39H28"/>
+    <path d="M26 57h42"/>
+  </g>
+  <g fill="#FF5A36">
+    <path d="M24 39l15-8v16z"/>
+    <path d="M72 57l-15 8V49z"/>
+  </g>
+</svg>
